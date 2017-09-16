@@ -2,43 +2,48 @@ package il.co.procyon.aroundtheworld;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
-import java.util.List;
-
-import il.co.procyon.aroundtheworld.api.NetworkManager;
-import il.co.procyon.aroundtheworld.objects.Country;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import il.co.procyon.aroundtheworld.adapters.CountriesAdapter;
+import il.co.procyon.aroundtheworld.managers.CountriesManager;
+import il.co.procyon.aroundtheworld.managers.InitCallback;
 
 public class MainActivity extends AppCompatActivity {
-private final String TAG = this.getClass().getSimpleName();
+    private final String TAG = this.getClass().getSimpleName();
+    private CountriesAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         TextView helloWorld= (TextView) findViewById(R.id.test_btn);
-        helloWorld.setOnClickListener(new View.OnClickListener() {
+        RecyclerView countriesRecycler = (RecyclerView) findViewById(R.id.rv_countries);
+        countriesRecycler.setLayoutManager(new LinearLayoutManager(this));
+        countriesRecycler.setHasFixedSize(true);
+        mAdapter = new CountriesAdapter();
+        countriesRecycler.setAdapter(mAdapter);
+
+        initData();
+
+    }
+
+    private void initData() {
+        CountriesManager.getInstance().initData(new InitCallback() {
             @Override
-            public void onClick(View view) {
-                NetworkManager.getAllCountries(new Callback<List<Country>>() {
-                    @Override
-                    public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
-                        final List<Country> body = response.body();
-                        Log.d(TAG, "onResponse: list size= " + body.size());
-                    }
+            public void onSuccess() {
+                populateCountries();
+            }
 
-                    @Override
-                    public void onFailure(Call<List<Country>> call, Throwable t) {
-
-                    }
-                });
-
+            @Override
+            public void onFailure() {
+                Toast.makeText(MainActivity.this, "Error loading data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void populateCountries() {
+        mAdapter.setData(CountriesManager.getInstance().getAllContires());
     }
 }
