@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">aroundtheworld</string>
+    <string name="main_label">מדינות העולם</string>
+    <string name="island_notice">הינה אי %s\nאין לה שכנים</string>
+    <string name="loading_data_please_wait">טוען מידע.\nאנא המתן</string>
+</resources>

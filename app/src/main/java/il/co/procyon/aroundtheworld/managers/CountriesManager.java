@@ -67,6 +67,15 @@ public class CountriesManager {
         return neighbours;
     }
 
+    public Country getCountry(String countryCode) throws CountryNotFoundException{
+        Country country = mCountriesList.get(countryCode);
+        if (country == null) {
+            throw new CountryNotFoundException("can't find country matching " + countryCode);
+        }
+
+        return country;
+    }
+
 
     public class CountryNotFoundException extends Exception{
 

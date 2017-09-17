@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="il.co.procyon.aroundtheworld.NeighbouringCountry">
+    <RelativeLayout
+        android:id="@+id/no_borders_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <ImageView
+            android:id="@+id/iv_island"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_nature"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/tv_is_island"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Australia ia an Island.\nIt ahs no neighbours"
+            android:layout_below="@+id/iv_island"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_neighbours"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>
