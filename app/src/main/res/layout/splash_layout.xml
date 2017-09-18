@@ -11,6 +11,9 @@
         android:layout_marginBottom="140dp"
         android:textAlignment="center"
         android:textSize="16sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:id="@+id/textView"/>
+
+
 
 </RelativeLayout>

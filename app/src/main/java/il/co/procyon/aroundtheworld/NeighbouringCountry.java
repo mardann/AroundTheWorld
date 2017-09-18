@@ -55,7 +55,7 @@ public class NeighbouringCountry extends AppCompatActivity implements CountriesA
             ArrayList<Country> neighbouringCountries = CountriesManager.getInstance().getNeibouringCountries(countryCode);
 
             Country country = CountriesManager.getInstance().getCountry(countryCode);
-            setTitle(getString(R.string.country_name, country.getName(), country.getNativeName()));
+            setTitle(getString(R.string.country_neighbours, country.getName(), country.getNativeName()));
 
 
             if (!neighbouringCountries.isEmpty()) {

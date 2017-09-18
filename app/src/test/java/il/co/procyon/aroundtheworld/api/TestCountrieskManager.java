@@ -6,10 +6,12 @@ import org.junit.Test;
  * Created by hanan on 15-Sep-17.
  */
 
-public class TestNetworkManager {
+public class TestCountrieskManager {
 
     @Test
-    public void testGeCountries(){
+    public void testMockCountries(){
+
+
 
 //        List<Country> countries = NetworkManager.getAllCountries();
 //
